@@ -7,7 +7,7 @@ class IdGenerator{
 		static int idCounter;
 	public:
 		static int getId(){
-			int outputId = idCounter;
+			const int outputId = idCounter;
 			idCounter++;
 			return outputId;
 		}
@@ -26,19 +26,19 @@ class Node {
 		std::string title;
 		std::string content; /* only text content for now */
 	public:
-		int getId(){
+		[[nodiscard]] int getId() const{
 			return id;
 		}
-		int getNodeByteSize(){
+		[[nodiscard]] int getNodeByteSize() const{
 			return nodeByteSize;
 		}
-		int getContentByteSize(){
+		[[nodiscard]] int getContentByteSize() const{
 			return contentByteSize;
 		}
-		int getTagCount(){
+		[[nodiscard]] int getTagCount() const{
 			return tagCount;
 		}
-		int getLinkCount(){
+		[[nodiscard]] int getLinkCount() const{
 			return linkCount;
 		}
 		std::string getTitle(){
@@ -48,10 +48,10 @@ class Node {
 			return content;
 		}
 
-		void setTitle(std::string newTitle){
+		void setTitle(const std::string &newTitle){
 			title = newTitle; 
 		}
-		void setContent(std::string newContent){
+		void setContent(const std::string &newContent){
 			content = newContent;
 		}
 
